@@ -1,4 +1,4 @@
-package com.f4stsearch.f4st_search;
+package com.f4stsearch;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
