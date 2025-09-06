@@ -13,18 +13,14 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-    private final ProductSearchPort search;
-    private final ProductRepository repository;
     private final ProductCacheService service;
 
-    public ProductService(ProductSearchPort search, ProductRepository repository, ProductCacheService service) {
-        this.search = search;
-        this.repository = repository;
+    public ProductService(ProductCacheService service) {
         this.service = service;
     }
 
     public List<Product> findAll() {
-        return search.findAll();
+        return service.findAll();
     }
 
     public Optional<Product> findById(Long id) {

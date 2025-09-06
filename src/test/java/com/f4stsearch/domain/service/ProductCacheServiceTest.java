@@ -1,5 +1,6 @@
 package com.f4stsearch.domain.service;
 
+import com.f4stsearch.domain.model.Product;
 import com.f4stsearch.domain.model.jpa.ProductCache;
 import com.f4stsearch.domain.repository.ProductCacheRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,7 +27,7 @@ class ProductCacheServiceTest {
     @Test
     void givenProductsInRepository_whenFindAll_thenReturnAllProducts() {
         when(repository.findAll()).thenReturn(List.of(new ProductCache()));
-        List<ProductCache> result = service.findAll();
+        List<Product> result = service.findAll();
         assertEquals(1, result.size());
     }
 

@@ -1,6 +1,8 @@
 package com.f4stsearch.domain.service;
 
 import com.f4stsearch.adapter.out.FakeStoreProductDTO;
+import com.f4stsearch.domain.mapper.ProductMapper;
+import com.f4stsearch.domain.model.Product;
 import com.f4stsearch.domain.model.jpa.ProductCache;
 import com.f4stsearch.domain.repository.ProductCacheRepository;
 import org.springframework.stereotype.Service;
@@ -34,8 +36,8 @@ public class ProductCacheService {
         return repository.save(product);
     }
 
-    public List<ProductCache> findAll() {
-        return repository.findAll();
+    public List<Product> findAll() {
+        return repository.findAll().stream().map(ProductMapper::fromCache).toList();
     }
 
     public ProductCache findByExternalId(Long externalId) {
