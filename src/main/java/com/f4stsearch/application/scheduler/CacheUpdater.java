@@ -3,6 +3,7 @@ package com.f4stsearch.application.scheduler;
 import com.f4stsearch.adapter.out.FakeStoreClient;
 import com.f4stsearch.domain.service.ProductCacheService;
 import com.f4stsearch.domain.service.SnapshotService;
+import jakarta.annotation.PostConstruct;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,7 @@ public class CacheUpdater {
         this.snapshotService = snapshotService;
     }
 
-    @Scheduled(cron = "0 0 * * * *")
+    @Scheduled(initialDelay = 0, fixedRate = 1800000)
     public void updateCache() {
         client.getAll().forEach(dto -> {
             var product = cacheService.saveOrUpdate(dto);
