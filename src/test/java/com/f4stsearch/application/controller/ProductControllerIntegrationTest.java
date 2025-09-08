@@ -2,6 +2,7 @@ package com.f4stsearch.application.controller;
 
 import com.f4stsearch.domain.model.jpa.ProductCache;
 import com.f4stsearch.domain.repository.ProductCacheRepository;
+import com.f4stsearch.domain.repository.ProductSnapshotRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,12 @@ class ProductControllerIntegrationTest {
     @Autowired
     private ProductCacheRepository repository;
 
+    @Autowired
+    private ProductSnapshotRepository snapshotRepository;
+
     @BeforeEach
     void setUp() {
+        snapshotRepository.deleteAll();
         repository.deleteAll();
 
         ProductCache p1 = new ProductCache();
@@ -46,7 +51,9 @@ class ProductControllerIntegrationTest {
 
     @Test
     void givenProductExists_whenGetById_thenReturnProduct() throws Exception {
-        mockMvc.perform(get("/products/1")
+        ProductCache saved = repository.findAll().getFirst();
+
+        mockMvc.perform(get("/products/" + saved.getExternalId())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value("Test Product 1"));
