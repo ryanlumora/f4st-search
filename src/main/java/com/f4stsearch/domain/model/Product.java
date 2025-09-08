@@ -1,23 +1,35 @@
 package com.f4stsearch.domain.model;
 
-import lombok.*;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "products")
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Product {
-    private String id;
+
+    @Id
+    private Long id;
+
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private Double price;
-    private String permalink;
+    private String description;
+    private String category;
+    private String image;
+    private Rating rating;
+    private String link;
 
-    public Product(String id, String title, Double price, String permalink) {
-        this.id = id;
-        this.title = title;
-        this.permalink = permalink;
-        this.price = price;
+    public double getRateValue() {
+        return this.rating != null ? this.rating.getRate() : 0.0;
     }
-
-    public String getTitle() {
-        return title;
-    }
-
 }
