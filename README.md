@@ -50,7 +50,7 @@ src/
 1. Clonar o repositório:
 
 ```bash
-git clone <repo-url>
+git clone (https://github.com/ryanlumora/f4st-search.git)
 cd f4st-search
 ```
 
