@@ -3,6 +3,7 @@ package com.f4stsearch.application.controller;
 import com.f4stsearch.domain.model.Product;
 import com.f4stsearch.domain.repository.ProductRepository;
 import com.f4stsearch.domain.service.ProductService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,13 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+@AllArgsConstructor
 public class ProductController {
 
     private final ProductService service;
-
-    public ProductController(ProductService service) {
-        this.service = service;
-    }
 
     @GetMapping("/all")
     public ResponseEntity<List<Product>> findAll() {

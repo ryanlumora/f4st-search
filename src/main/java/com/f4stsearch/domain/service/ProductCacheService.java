@@ -32,6 +32,7 @@ public class ProductCacheService {
         product.setRatingRate(dto.getRating().getRate());
         product.setRatingCount(dto.getRating().getCount());
         product.setLastUpdated(LocalDateTime.now());
+        product.setProductLink("https://fakestoreapi.com/products/" + dto.getId());
 
         return repository.save(product);
     }

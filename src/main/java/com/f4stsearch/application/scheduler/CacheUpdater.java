@@ -20,7 +20,12 @@ public class CacheUpdater {
         this.snapshotService = snapshotService;
     }
 
-    @Scheduled(initialDelay = 0, fixedRate = 1800000)
+    @PostConstruct
+    public void initCache(){
+        updateCache();
+    }
+
+        @Scheduled(cron = "0 0 0 * * *")
     public void updateCache() {
         client.getAll().forEach(dto -> {
             var product = cacheService.saveOrUpdate(dto);

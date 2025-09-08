@@ -1,10 +1,19 @@
 package com.f4stsearch.domain.model.jpa;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "product_snapshots")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ProductSnapshot {
 
     @Id
@@ -20,46 +29,4 @@ public class ProductSnapshot {
     private Integer ratingCount;
 
     private LocalDateTime snapshotTime;
-
-    public ProductSnapshot() {}
-
-    public ProductCache getProductCache() {
-        return productCache;
-    }
-
-    public void setProductCache(ProductCache productCache) {
-        this.productCache = productCache;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public Double getRatingRate() {
-        return ratingRate;
-    }
-
-    public void setRatingRate(Double ratingRate) {
-        this.ratingRate = ratingRate;
-    }
-
-    public Integer getRatingCount() {
-        return ratingCount;
-    }
-
-    public void setRatingCount(Integer ratingCount) {
-        this.ratingCount = ratingCount;
-    }
-
-    public LocalDateTime getSnapshotTime() {
-        return snapshotTime;
-    }
-
-    public void setSnapshotTime(LocalDateTime snapshotTime) {
-        this.snapshotTime = snapshotTime;
-    }
 }

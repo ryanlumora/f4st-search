@@ -2,6 +2,7 @@ package com.f4stsearch.domain.service;
 
 import com.f4stsearch.domain.model.jpa.ProductCache;
 import com.f4stsearch.domain.repository.ProductCacheRepository;
+import com.f4stsearch.domain.repository.ProductSnapshotRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -14,12 +15,14 @@ import static org.mockito.Mockito.when;
 class InsightServiceTest {
 
     private ProductCacheRepository cacheRepository;
+    private ProductSnapshotRepository snapshotRepository;
     private InsightService insightService;
 
     @BeforeEach
     void setUp() {
         cacheRepository = Mockito.mock(ProductCacheRepository.class);
-        insightService = new InsightService(cacheRepository);
+        snapshotRepository = Mockito.mock(ProductSnapshotRepository.class);
+        insightService = new InsightService(cacheRepository,snapshotRepository);
     }
 
     @Test

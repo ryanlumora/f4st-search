@@ -3,7 +3,10 @@ package com.f4stsearch.domain.service;
 import com.f4stsearch.domain.mapper.ProductMapper;
 import com.f4stsearch.domain.model.Product;
 import com.f4stsearch.domain.model.jpa.ProductCache;
+import com.f4stsearch.domain.model.jpa.ProductSnapshot;
 import com.f4stsearch.domain.repository.ProductCacheRepository;
+import com.f4stsearch.domain.repository.ProductSnapshotRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -12,13 +15,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class InsightService {
 
     private final ProductCacheRepository cacheRepository;
-
-    public InsightService(ProductCacheRepository cacheRepository) {
-        this.cacheRepository = cacheRepository;
-    }
+    private final ProductSnapshotRepository snapshotRepository;
 
     public List<Product> bestRate(int limit) {
         return cacheRepository.findAll().stream()
@@ -45,7 +46,7 @@ public class InsightService {
     public Map<String, Double> averagePriceByCategory() {
         return cacheRepository.findAll().stream()
                 .collect(Collectors.groupingBy(ProductCache::getCategory,
-                        Collectors.averagingDouble(ProductCache::getRatingRate)));
+                        Collectors.averagingDouble(ProductCache::getPrice)));
     }
 
     public Map<String, Double> averageRatingByCategory() {
@@ -64,10 +65,10 @@ public class InsightService {
     }
 
     public Map<Long, Double> averagePricePerProduct() {
-        return cacheRepository.findAll().stream()
+        return snapshotRepository.findAll().stream()
                 .collect(Collectors.groupingBy(
-                        ProductCache::getExternalId,
-                        Collectors.averagingDouble(ProductCache::getPrice)
+                        snapshot -> snapshot.getProductCache().getId(),
+                        Collectors.averagingDouble(ProductSnapshot::getPrice)
                 ));
     }
 }

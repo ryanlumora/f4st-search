@@ -2,6 +2,7 @@ package com.f4stsearch.application.controller;
 
 import com.f4stsearch.domain.model.Product;
 import com.f4stsearch.domain.service.InsightService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +14,9 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/insights")
+@AllArgsConstructor
 public class InsightController {
     private final InsightService service;
-
-    public InsightController(InsightService service) {
-        this.service = service;
-    }
 
     @GetMapping("/best-value")
     public ResponseEntity<List<Product>> bestValue(
