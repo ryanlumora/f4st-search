@@ -20,11 +20,6 @@ public class CacheUpdater {
         this.snapshotService = snapshotService;
     }
 
-    @PostConstruct
-    public void initCache(){
-        updateCache();
-    }
-
         @Scheduled(cron = "0 0 0 * * *")
     public void updateCache() {
         client.getAll().forEach(dto -> {
