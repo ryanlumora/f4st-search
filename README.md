@@ -17,7 +17,7 @@ O sistema busca produtos da Fake Store API e gera insights relevantes:
 ---
 
 ## Estrutura do projeto
-
+```
 src/
 └─ main/
 ├─ java/com/f4stsearch/
@@ -32,7 +32,7 @@ src/
 │ └─ domain/port/ # Interfaces/ports
 └─ resources/
 └─ application.properties
-
+```
 ---
 
 ## Tecnologias
@@ -77,7 +77,7 @@ http://localhost:8080/swagger-ui.html
 **GET /products**
 
 Exemplo de resposta:
-
+```
 {
   "id": 1,
   "title": "Fjallraven - Foldsack No. 1 Backpack",
@@ -91,13 +91,14 @@ Exemplo de resposta:
   },
   "externalLink": "https://fakestoreapi.com/products/1"
 }
+```
 
 # Get product by ID
 
 **GET /products/{id}**
 
 Exemplo de resposta:
-
+```
 {
   "id": 1,
   "title": "Fjallraven - Foldsack No. 1 Backpack",
@@ -111,7 +112,7 @@ Exemplo de resposta:
   },
   "externalLink": "https://fakestoreapi.com/products/1"
 }
-
+```
 ## Insights
 
 # Best value products
@@ -119,7 +120,7 @@ Exemplo de resposta:
 **GET /insights/best-value?category=men's clothing&limit=5**
 
 Exemplo de resposta:
-
+```
   {
     "id": 1,
     "title": "Fjallraven - Foldsack No. 1 Backpack",
@@ -133,9 +134,7 @@ Exemplo de resposta:
     },
     "externalLink": "https://fakestoreapi.com/products/1"
   }
-]
-
-
+```
 
 # Best rated products
 
@@ -144,7 +143,7 @@ Exemplo de resposta:
 
 Exemplo de resposta:
 
-
+```
   {
     "id": 1,
     "title": "Fjallraven - Foldsack No. 1 Backpack",
@@ -158,7 +157,7 @@ Exemplo de resposta:
     },
     "externalLink": "https://fakestoreapi.com/products/1"
   }
-
+```
 
 
 # Average price per category
@@ -167,34 +166,33 @@ Exemplo de resposta:
 
 
 Exemplo de resposta:
-
+```
 {
   "men's clothing": 65.0,
   "jewelery": 520.0,
   "electronics": 199.99
 }
-
+```
 
 # Average rating per category
 
 **GET /insights/average-rating-by-category**
 
 Exemplo de resposta:
-
+```
 {
   "men's clothing": 4.3,
   "jewelery": 4.7,
   "electronics": 4.2
 }
-
+```
 
 # Top product by category
 
 **GET /insights/top-by-category**
 
-
 Exemplo de resposta:
-
+```
 {
   "men's clothing": {
     "id": 1,
@@ -210,20 +208,20 @@ Exemplo de resposta:
     "externalLink": "https://fakestoreapi.com/products/1"
   }
 }
-
+```
 
 # Historical average price per product
 
 **GET /insights/historical/average-price**
 
 Exemplo de resposta:
-
+```
 {
   "1": 109.95,
   "2": 22.3,
   "3": 55.5
 }
-
+```
 ---
 
 ## Decisões técnicas e trade-offs
