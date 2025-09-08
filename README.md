@@ -226,16 +226,16 @@ Exemplo de resposta:
 
 ## Decisões técnicas e trade-offs
 
-# Cache local (H2): armazena histórico e agiliza cálculos sem sobrecarregar a API externa.
+Cache local (H2): armazena histórico e agiliza cálculos sem sobrecarregar a API externa.
 
-# Hexagonal architecture: desacoplamento entre domínio e infraestrutura, facilita testes e manutenção.
+Hexagonal architecture: desacoplamento entre domínio e infraestrutura, facilita testes e manutenção.
 
-# Feign Client: simplifica chamadas HTTP externas, reduz boilerplate.
+Feign Client: simplifica chamadas HTTP externas, reduz boilerplate.
 
-# Cobertura de testes >80%: garante confiabilidade dos serviços e endpoints.
+Cobertura de testes >80%: garante confiabilidade dos serviços e endpoints.
 
-# Springdoc / Swagger: documentação interativa dos endpoints para consumo rápido.
+Springdoc / Swagger: documentação interativa dos endpoints para consumo rápido.
 
-# Histórico de snapshots: permite análises históricas de preços e métricas.
+Histórico de snapshots: permite análises históricas de preços e métricas.
 
-# Decisão de não implementar CRUD: dados são externos; foco em leitura, cache e insights.
+Decisão de não implementar CRUD: dados são externos; foco em leitura, cache e insights.
